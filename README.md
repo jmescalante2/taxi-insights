@@ -78,6 +78,7 @@ Run the application to create the postgres database and table, and populate the 
 ```bash
 poetry run app
 ```
+Give it some time to finish populating the table with the data from the Parquet file.
 
 ### Launch Superset
 Login and take a look: Navigate to http://localhost:8080
@@ -85,7 +86,8 @@ Login and take a look: Navigate to http://localhost:8080
 To replicate the dashboards using the exported dashboard data, follow the instructions below:
 1. Check &lt;project-directory&gt;/data/dashboard_backup.zip
 2. Navigate to the "import dashboards" button at the top-right corner under the Settings dropdown. ![alt text](docs/superset-step2.png)
-3. Click the imported dashboard and you should see all the imported charts.
+3. Enter the password that you set for Superset. It is "admin" by default.
+4. Click the imported dashboard and you should see all the imported charts.
 
 
 ## Discussion
