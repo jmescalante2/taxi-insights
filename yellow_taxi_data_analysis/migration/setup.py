@@ -64,41 +64,10 @@ def define_table_schema(engine):
     return yellow_taxi_trips
 
 
-def truncate_table(engine, table_name):
-    if inspect(engine).has_table(table_name):
-        with engine.begin() as conn:
-            conn.execute(f"TRUNCATE TABLE {table_name} RESTART IDENTITY CASCADE")
-
-
-def load_data_in_chunks(engine, parquet_file, batch_size=50000):
-    import pandas as pd
-    import pyarrow.parquet as pq
-
-    # Open the Parquet file
-    parquet_file = pq.ParquetFile(parquet_file)
-
-    # Truncate the table before loading new data
-    with engine.begin() as conn:
-        conn.execute(text("TRUNCATE TABLE yellow_taxi_trips RESTART IDENTITY"))
-
-    # Iterate over batches
-    for batch in parquet_file.iter_batches(batch_size=batch_size):
-        # Convert the batch to a pandas DataFrame
-        df_chunk = batch.to_pandas()
-
-        # Clean data for each chunk (example: remove records with passenger_count <= 0)
-        df_clean = df_chunk[df_chunk["passenger_count"] > 0]
-
-        # Load chunk into SQL database
-        df_clean.to_sql(
-            "yellow_taxi_trips",
-            engine,
-            if_exists="append",
-            index=False,
-            schema="public",
-        )
-
-        print("Loaded a chunk of size", len(df_clean))
+# def truncate_table(engine, table_name):
+#     if inspect(engine).has_table(table_name):
+#         with engine.begin() as conn:
+#             conn.execute(f"TRUNCATE TABLE {table_name} RESTART IDENTITY CASCADE")
 
 
 def main():
@@ -106,8 +75,3 @@ def main():
     create_database(engine, DB_NAME)
     with_db_engine = create_engine(f"{DB_URI}/{DB_NAME}")
     yellow_taxi_trips = define_table_schema(with_db_engine)
-    load_data_in_chunks(with_db_engine, "yellow_tripdata_2023-12.parquet")
-
-
-if __name__ == "__main__":
-    main()
