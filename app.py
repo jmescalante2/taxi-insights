@@ -1,7 +1,7 @@
 import pandas as pd
 import pyarrow.parquet as pq
 
-from yellow_taxi_data_analysis import load, model, transformer
+from yellow_taxi_data_analysis import database, load, transformer
 from yellow_taxi_data_analysis.database import get_engine
 from yellow_taxi_data_analysis.paths import TAXI_ZONE_DATA_PATH, YELLOW_TAXI_DATA_PATH
 
@@ -26,7 +26,7 @@ ENGINE = get_engine(
 
 
 def set_up():
-    model.create_database(ENGINE)
+    database.create_database(ENGINE)
     print("Database and table created successfully.")
 
 

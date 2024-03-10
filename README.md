@@ -47,12 +47,12 @@ poetry install
 ```
 
 ### Launch Postgres and Superset
+Start Docker then execute
 ```bash
-open -a Docker
 docker-compose up -d
 ```
 
-### Set up Superset (Once Container is Running)
+### Set up Superset (Only After the Container is Running)
 1. Setup your local admin account
 ```bash
 docker exec -it superset superset fab create-admin \
