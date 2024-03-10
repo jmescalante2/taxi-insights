@@ -22,6 +22,3 @@ services:
     ports:
       - "8080:8088"
 
-volumes:
-  superset-home:
-    driver: local

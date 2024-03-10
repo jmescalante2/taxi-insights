@@ -63,7 +63,7 @@ def get_time_of_day(hour):
         return "Evening"
 
 
-def transform(batch_df, taxi_zones_df):
+def transform(batch_df, taxi_zones_df, verbose=True):
     taxi_trips_chunk_df = standardize_column_names(batch_df)
     taxi_trips_chunk_df = without_zero_passengers(taxi_trips_chunk_df)
 
@@ -117,6 +117,7 @@ def transform(batch_df, taxi_zones_df):
         },
     )
 
-    print(f"cleaned {len(batch_df)}=>{len(taxi_trips_chunk_df)} rows")
+    if verbose:
+        print(f"cleaned {len(batch_df)}=>{len(taxi_trips_chunk_df)} rows")
 
     return taxi_trips_chunk_df

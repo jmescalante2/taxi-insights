@@ -32,16 +32,10 @@ def set_up():
 
 def main():
     set_up()
+
     taxi_trips_df = pq.ParquetFile(YELLOW_TAXI_DATA_PATH)
     taxi_zones_df = pd.read_csv(TAXI_ZONE_DATA_PATH)
 
-    count = 0
-
     for batch in taxi_trips_df.iter_batches(batch_size=BATCH_SIZE):
         transformed_df = transformer.transform(batch.to_pandas(), taxi_zones_df)
-        # print(transformed_df.info())
         load.load(TABLE_NAME, transformed_df, ENGINE, verbose=True)
-
-        count += 1
-        if count == 3:
-            break
