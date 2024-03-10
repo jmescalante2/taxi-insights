@@ -1,5 +1,7 @@
 from sqlalchemy import Column, Date, DateTime, Float, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy_utils import create_database as create_database_util
+from sqlalchemy_utils import database_exists
 
 Base = declarative_base()
 
@@ -43,8 +45,15 @@ class YellowTaxiTrip(Base):
     dropoff_calendar_date = Column(Date)
 
 
-def create_database(engine):
+def create_database(engine, db_name):
     # Create database and table
+
+    if not database_exists(engine.url):
+        create_database_util(engine.url)
+        print(f"Database {db_name} created.")
+    else:
+        print(f"Database {db_name} already exists.")
+
     Base.metadata.drop_all(engine)  # Drops table if exists
     Base.metadata.create_all(engine)  # Creates new table
 

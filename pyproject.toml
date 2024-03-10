@@ -13,6 +13,7 @@ pyarrow = "^15.0.1"
 fastparquet = "^2024.2.0"
 matplotlib = "^3.8.3"
 psycopg2 = "^2.9.9"
+sqlalchemy-utils = "^0.41.1"
 
 
 [tool.poetry.scripts]
