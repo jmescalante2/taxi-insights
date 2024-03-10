@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16.2
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5432:5432
+  
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    environment:
+      SUPERSET_SECRET_KEY: secret
+    ports:
+      - "8080:8088"
+
+volumes:
+  superset-home:
+    driver: local
