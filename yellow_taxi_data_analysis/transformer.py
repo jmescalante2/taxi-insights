@@ -39,6 +39,7 @@ def derive_location_details(
 def build_date_dimension(df, datetime_column, rename):
     df["week_name"] = df[datetime_column].dt.day_name()
     df["calendar_day"] = df[datetime_column].dt.day
+    df["calendar_date"] = df[datetime_column].dt.date
     df = df.rename(columns=rename)
 
     return df
@@ -102,6 +103,7 @@ def transform(batch_df, taxi_zones_df):
         rename={
             "week_name": "pickup_week_name",
             "calendar_day": "pickup_calendar_day",
+            "calendar_date": "pickup_calendar_date",
         },
     )
 
@@ -110,7 +112,8 @@ def transform(batch_df, taxi_zones_df):
         "tpep_dropoff_datetime",
         rename={
             "week_name": "dropoff_week_name",
-            "calendar_day": "dropff_calendar_day",
+            "calendar_day": "dropoff_calendar_day",
+            "calendar_date": "dropoff_calendar_date",
         },
     )
 
