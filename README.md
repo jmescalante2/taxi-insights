@@ -27,12 +27,12 @@ Clone the repository to your local machine using the following command:
 
 ```bash
 git clone https://github.com/jmescalante2/taxi-insights.git
-cd <project-root-directory>
+cd taxi-insights
 ```
 
 ### Install Poetry
 
-Poetry is a tool for dependency management and packaging in Python. To install Poetry, follow the installation instructions on the [Poetry documentation page](https://python-poetry.org/docs/#installation). Make sure to activate your virtual environment first before the installation.
+Poetry is a tool for dependency management and packaging in Python. To install Poetry, execute the commands below. Make sure to activate your virtual environment first before the installation. Additional reference: (https://python-poetry.org/docs/#installation)
 
 ```bash
 python3.12 -m venv .venv
