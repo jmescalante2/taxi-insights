@@ -26,7 +26,7 @@ ENGINE = get_engine(
 
 
 def set_up():
-    database.create_database(ENGINE)
+    database.create_database(ENGINE, DB_NAME)
     print("Database and table created successfully.")
 
 
