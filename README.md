@@ -112,15 +112,15 @@ If given more time, we could
 
 1. Data Expansion: Broaden the time span of the dataset to include a larger historical context, and integrate additional datasets to enrich the analysis and generate deeper insights.
 
-2. Script Parameterization: Implement argument parsing using argparse or leverage a more sophisticated configuration management tool like Pydantic, enabling more dynamic control over script parameters.
+2. Automated Data Validation: Introduce data contracts and implement automated checks to validate data integrity and accuracy systematically.
 
-3. Containerization: Dockerize the Python processing application to mirror the containerized setup of PostgreSQL and Superset, fostering a more consistent and scalable development environment.
+3. Script Parameterization: Implement argument parsing using argparse or leverage a more sophisticated configuration management tool like Pydantic, enabling more dynamic control over script parameters.
 
-4. Automated Testing: Develop a suite of automated tests to ensure code reliability, functionality, and to facilitate continuous integration and deployment processes.
+4. Containerization: Dockerize the Python processing application to mirror the containerized setup of PostgreSQL and Superset, fostering a more consistent and scalable development environment.
 
-5. Code Quality Enhancement: Focus on refining the codebase to support extensibility and maintainability, reduce the occurrence of bugs, and improve collaborative efforts among developers.
+5. Automated Testing: Develop a suite of automated tests to ensure code reliability, functionality, and to facilitate continuous integration and deployment processes.
 
-6. Automated Data Validation: Introduce data contracts and implement automated checks to validate data integrity and accuracy systematically.
+6. Code Quality Enhancement: Focus on refining the codebase to support extensibility and maintainability, reduce the occurrence of bugs, and improve collaborative efforts among developers.
 
 7. Distributed Computing: Prepare for scaling data operations by adopting a distributed computing framework such as Apache Spark, which can handle increased data volumes and complex processing workloads efficiently.
 
